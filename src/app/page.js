@@ -36,7 +36,7 @@ export default function Home() {
 
   return (
     <div className="install-prompt">
-      Hello Na
+      Hello Nave
   </div>
   );
 }
