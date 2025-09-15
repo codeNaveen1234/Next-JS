@@ -7,7 +7,7 @@ const nextConfig = {
   swcMinify:true,
   reactStrictMode:true,
   experimental: {
-    turbo: {}, // if you want Turbopack
+    turbo: false, // if you want Turbopack
   },
   experimental: {
     missingSuspenseWithCSRBailout: false,
