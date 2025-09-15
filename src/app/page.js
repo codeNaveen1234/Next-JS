@@ -4,46 +4,39 @@ import { useState, useEffect } from 'react';
 
 
 export default function Home() {
-  const [deferredPrompt, setDeferredPrompt] = useState(null);
-  const [isIOS, setIsIOS] = useState(false);
-  const [isStandalone, setIsStandalone] = useState(false);
+  // const [deferredPrompt, setDeferredPrompt] = useState(null);
+  // const [isIOS, setIsIOS] = useState(false);
+  // const [isStandalone, setIsStandalone] = useState(false);
 
-  useEffect(() => {
-    // Check if app is already installed
-    setIsStandalone(window.matchMedia('(display-mode: standalone)').matches);
+  // useEffect(() => {
+  //   // Check if app is already installed
+  //   setIsStandalone(window.matchMedia('(display-mode: standalone)').matches);
     
-    // Check if iOS
-    setIsIOS(/iPad|iPhone|iPod/.test(navigator.userAgent));
+  //   // Check if iOS
+  //   setIsIOS(/iPad|iPhone|iPod/.test(navigator.userAgent));
     
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      setDeferredPrompt(e);
+  //   window.addEventListener('beforeinstallprompt', (e) => {
+  //     e.preventDefault();
+  //     setDeferredPrompt(e);
 
-    });
-  }, []);
+  //   });
+  // }, []);
 
-  const handleInstallClick = async () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      if (outcome === 'accepted') {
-        setDeferredPrompt(null);
-      }
-    }
-  };
+  // const handleInstallClick = async () => {
+  //   if (deferredPrompt) {
+  //     deferredPrompt.prompt();
+  //     const { outcome } = await deferredPrompt.userChoice;
+  //     if (outcome === 'accepted') {
+  //       setDeferredPrompt(null);
+  //     }
+  //   }
+  // };
 
-  if (isStandalone) return null;
+  // if (isStandalone) return null;
 
   return (
     <div className="install-prompt">
-    <button onClick={handleInstallClick}>
-      Install App
-    </button>
-    {isIOS && (
-      <p>
-        To install this app: tap share → "Add to Home Screen"
-      </p>
-    )}
+      Hello
   </div>
   );
 }
