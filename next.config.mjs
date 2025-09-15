@@ -15,11 +15,37 @@ const pwaConfig =withPWA({
   register:true,
   skipWaiting:true,
   disable:process.env.NODE_ENV === 'development',
-  fallbacks: {},
+  cacheOnFrontEndNav: true,
+  aggressiveFrontEndNavCaching: true,
+  reloadOnOnline: true,
+  swcMinify: true,
   workboxOptions: {
-    navigateFallback: null,
-    runtimeCaching: [],
-  },
-})
+    disableDevLogs: true,
+  runtimeCaching: [
+    {
+      urlPattern: /^https:\/\/api\.example\.com\/data.*/i,
+      handler: 'NetworkFirst',
+      options: {
+        cacheName: 'example-api-cache',
+        expiration: {
+          maxEntries: 100,
+          maxAgeSeconds: 60 * 60 * 24 * 7,
+        },
+        cacheableResponse: {
+          statuses: [0, 200],
+        },
+      },
+    },
+    {
+      urlPattern: /.*/i,
+      handler: 'NetworkOnly',
+      options: {
+        cacheableResponse: {
+          statuses: [0, 200],
+        },
+      },
+    },
+  ]
+}})
 
 export default pwaConfig(nextConfig);
