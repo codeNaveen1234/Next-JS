@@ -3,7 +3,6 @@
 import withPWA from 'next-pwa';
 
 const nextConfig = {
-  distDir:'build',
   swcMinify:true,
   reactStrictMode:true,
   experimental: {
