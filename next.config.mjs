@@ -8,18 +8,7 @@ const nextConfig = {
   reactStrictMode:true,
   experimental: {
     turbo: false, // if you want Turbopack
-  },
-  experimental: {
-    missingSuspenseWithCSRBailout: false,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  reactStrictMode: false,
-  nx: {
-    svgr: false,
-  },
-  basePath: '',
+  }
 };
 
 const pwaConfig =withPWA({
