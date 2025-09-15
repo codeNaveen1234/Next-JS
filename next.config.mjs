@@ -6,7 +6,7 @@ const nextConfig = {
   swcMinify:true,
   reactStrictMode:true,
   experimental: {
-    turbo: false, // if you want Turbopack
+    turbo: false,
   }
 };
 
@@ -15,7 +15,10 @@ const pwaConfig =withPWA({
   register:true,
   skipWaiting:true,
   disable:process.env.NODE_ENV === 'development',
-  fallbacks: false,
+  fallbacks: {},
+  workboxOptions: {
+    navigateFallback: undefined, // disable offline fallback page
+  },
 })
 
 export default pwaConfig(nextConfig);
