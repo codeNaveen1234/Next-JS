@@ -15,11 +15,11 @@ const pwaConfig =withPWA({
   register:true,
   skipWaiting:true,
   disable:process.env.NODE_ENV === 'development',
-  fallbacks: {},
+  fallbacks: {document:false},
 
-  workboxOptions: {
-    navigateFallback: null
-  },
+  // workboxOptions: {
+  //   navigateFallback: null
+  // },
 
 //   cacheOnFrontEndNav: true,
 //   aggressiveFrontEndNavCaching: true,
