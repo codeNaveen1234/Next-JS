@@ -15,7 +15,7 @@ const pwaConfig =withPWA({
   register:true,
   skipWaiting:true,
   disable:process.env.NODE_ENV === 'development',
-  fallbacks: {document:false},
+  fallbacks: {document:'/_offline.js'},
 
   // workboxOptions: {
   //   navigateFallback: null
