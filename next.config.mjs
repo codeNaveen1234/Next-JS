@@ -15,37 +15,44 @@ const pwaConfig =withPWA({
   register:true,
   skipWaiting:true,
   disable:process.env.NODE_ENV === 'development',
-  cacheOnFrontEndNav: true,
-  aggressiveFrontEndNavCaching: true,
-  reloadOnOnline: true,
-  swcMinify: true,
+  fallbacks: {},
+
   workboxOptions: {
-    disableDevLogs: true,
-  runtimeCaching: [
-    {
-      urlPattern: /^https:\/\/api\.example\.com\/data.*/i,
-      handler: 'NetworkFirst',
-      options: {
-        cacheName: 'example-api-cache',
-        expiration: {
-          maxEntries: 100,
-          maxAgeSeconds: 60 * 60 * 24 * 7,
-        },
-        cacheableResponse: {
-          statuses: [0, 200],
-        },
-      },
-    },
-    {
-      urlPattern: /.*/i,
-      handler: 'NetworkOnly',
-      options: {
-        cacheableResponse: {
-          statuses: [0, 200],
-        },
-      },
-    },
-  ]
-}})
+    navigateFallback: null
+  },
+
+//   cacheOnFrontEndNav: true,
+//   aggressiveFrontEndNavCaching: true,
+//   reloadOnOnline: true,
+//   swcMinify: true,
+//   workboxOptions: {
+//     disableDevLogs: true,
+//   runtimeCaching: [
+//     {
+//       urlPattern: /^https:\/\/api\.example\.com\/data.*/i,
+//       handler: 'NetworkFirst',
+//       options: {
+//         cacheName: 'example-api-cache',
+//         expiration: {
+//           maxEntries: 100,
+//           maxAgeSeconds: 60 * 60 * 24 * 7,
+//         },
+//         cacheableResponse: {
+//           statuses: [0, 200],
+//         },
+//       },
+//     },
+//     {
+//       urlPattern: /.*/i,
+//       handler: 'NetworkOnly',
+//       options: {
+//         cacheableResponse: {
+//           statuses: [0, 200],
+//         },
+//       },
+//     },
+//   ]
+// }
+})
 
 export default pwaConfig(nextConfig);
