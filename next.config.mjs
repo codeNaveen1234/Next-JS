@@ -16,7 +16,9 @@ const pwaConfig =withPWAInit({
   register:true,
   skipWaiting:true,
   disable:process.env.NODE_ENV === 'development',
-  fallbacks:false,
+  fallbacks:{
+    document:false
+  }
   // fallbacks: {
   //   // Failed page requests fallback to this.
   //   document: "/~offline",
