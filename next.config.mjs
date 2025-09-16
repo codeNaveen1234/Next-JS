@@ -16,6 +16,7 @@ const pwaConfig =withPWAInit({
   register:true,
   skipWaiting:true,
   disable:process.env.NODE_ENV === 'development',
+  fallbacks:false,
   // fallbacks: {
   //   // Failed page requests fallback to this.
   //   document: "/~offline",
@@ -68,5 +69,13 @@ const pwaConfig =withPWAInit({
 //   ]
 // }
 })
+
+// const withPWA = require("@ducanh2912/next-pwa").default({
+//   dest: "public",
+//   // ... other options
+//   fallbacks: {
+//     document: "/_offline", 
+//   },
+// });
 
 export default pwaConfig(nextConfig);
