@@ -19,24 +19,29 @@ const withPWA = withPWAInit({
   swcMinify: true,
   dest: "public",
   fallbacks: {
-    //image: "/static/images/fallback.png",
-    document: "/offline", // if you want to fallback to a custom page rather than /_offline
-    // font: '/static/font/fallback.woff2',
-    // audio: ...,
-    // video: ...,
+    document: "/~offline",
+    // This is for /_next/.../.json files.
+    data: "/fallback.json",
+    // This is for images.
+    image: "/fallback.webp",
+    // This is for audio files.
+    audio: "/fallback.mp3",
+    // This is for video files.
+    video: "/fallback.mp4",
+    // This is for fonts.
+    font: "/fallback-font.woff2",
+
   },
   workboxOptions: {
     disableDevLogs: true,
   },
-  // ... other options you like
 });
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode:true,
-  // experimental: {
-  //       turbo: false,
-  //     }
-  // ... other options you like
+  experimental: {
+        turbo: false,
+      }
 };
 
 export default withPWA(nextConfig);

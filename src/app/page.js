@@ -3,7 +3,7 @@
 export default function Home() {
   return (
     <div className="install-prompt">
-      Hello Naveen kumar
+      Hello Naveen
   </div>
   );
 }
