@@ -2,23 +2,55 @@
 
 // import withPWA from 'next-pwa';
 import withPWAInit from "@ducanh2912/next-pwa";
+// import withPWA from "@ducanh2912/next-pwa";
 
+// const nextConfig = {
+//   swcMinify:true,
+//   reactStrictMode:true,
+//   experimental: {
+//     turbo: false,
+//   }
+// };
+
+const withPWA = withPWAInit({
+  cacheOnFrontEndNav: true,
+  aggressiveFrontEndNavCaching: true,
+  reloadOnOnline: true,
+  swcMinify: true,
+  dest: "public",
+  fallbacks: {
+    //image: "/static/images/fallback.png",
+    document: "/offline", // if you want to fallback to a custom page rather than /_offline
+    // font: '/static/font/fallback.woff2',
+    // audio: ...,
+    // video: ...,
+  },
+  workboxOptions: {
+    disableDevLogs: true,
+  },
+  // ... other options you like
+});
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  swcMinify:true,
   reactStrictMode:true,
-  experimental: {
-    turbo: false,
-  }
+  // experimental: {
+  //       turbo: false,
+  //     }
+  // ... other options you like
 };
 
-const pwaConfig =withPWAInit({
-  dest:'public',
-  register:true,
-  skipWaiting:true,
-  disable:process.env.NODE_ENV === 'development',
-  fallbacks:{
-    document:false
-  }
+export default withPWA(nextConfig);
+
+// module.exports = withPWA(nextConfig);
+
+// const pwaConfig =withPWAInit({
+//   dest:'public',
+//   register:true,
+//   skipWaiting:true,
+//   disable:process.env.NODE_ENV === 'development',
+//   fallbacks:{
+//     document:false
+//   }
   // fallbacks: {
   //   // Failed page requests fallback to this.
   //   document: "/~offline",
@@ -70,7 +102,7 @@ const pwaConfig =withPWAInit({
 //     },
 //   ]
 // }
-})
+// })
 
 // const withPWA = require("@ducanh2912/next-pwa").default({
 //   dest: "public",
@@ -80,4 +112,4 @@ const pwaConfig =withPWAInit({
 //   },
 // });
 
-export default pwaConfig(nextConfig);
+// export default pwaConfig(nextConfig);
